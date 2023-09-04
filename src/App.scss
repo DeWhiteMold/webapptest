@@ -9,6 +9,7 @@ input::-webkit-inner-spin-button {
 }
 
 .app {
+  position: relative;
   margin: 0;
   padding: 10px 20px;
   box-sizing: border-box;
@@ -138,4 +139,20 @@ input::-webkit-inner-spin-button {
     width: 100%;
     height: fit-content;
   }
+}
+
+.ok-banner {
+  font-family: sans-serif;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: var(--tg-theme-bg-color);
+  color: var(--tg-theme-text-color);
 }

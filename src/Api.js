@@ -58,12 +58,14 @@ class Api {
   withdraw(lang, userId) {
     return fetch(`${this._url}/withdraw`, {
       method: 'POST',
+      headers: {
+        'Content-type': 'application/json'
+      },
       body: JSON.stringify({
         bot_lang: lang,
         user_id: userId,
       })
     })
-    .then(res => this._getResponse(res))
   }
 }
 

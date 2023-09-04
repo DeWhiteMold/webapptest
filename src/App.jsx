@@ -15,6 +15,7 @@ function App() {
   const [user, setUser] = useState(null)
   const [cardNumber,setCardNumber] = useState('')
   const [withdrawValue, setWithdrawValue] = useState('')
+  const [isWithdrawOk, setIsWithdrawOk] = useState(false)
 
   const handleCardInput = (e) => {
     setCardNumber(e.target.value)
@@ -32,14 +33,15 @@ function App() {
           setIsSub(true)
         }
       })
-      // .then(() => {
-      //   api.checkSub(lang, user.id)
-      //   .then(res => console.log(res))
-      // }) 
+      .then(() => {
+        api.checkSub(lang, user.id)
+        .then(res => console.log(res))
+      })
   }
 
   useEffect(() => {
-    if(cardRegExp.test(cardNumber) && withdrawValue > 0 && isSub) {
+    if(cardNumber.length > 5 && withdrawValue > 0 && isSub) {
+      tg.MainButton.text = texts.withdraw_money_button
       tg.MainButton.show()
     } else {
       tg.MainButton.hide()
@@ -47,6 +49,10 @@ function App() {
   }, [cardNumber, withdrawValue, isSub])
 
   const onSendData = useCallback(() => {
+    api.withdraw(lang, user.id)
+      .then(() => {
+        setIsWithdrawOk(true)
+      })
     console.log(withdrawValue, cardNumber, user)
   }, [withdrawValue, cardNumber, user])
 
@@ -64,6 +70,12 @@ function App() {
     return () => {tg.offEvent('mainButtonClicked', onSendData)}
   })
 
+  useEffect(() => {
+    isWithdrawOk && 
+      setTimeout(() => {tg.close()
+      console.log('f')}, 5000)
+  }, [isWithdrawOk])
+
   return texts !== null && (
     <div className="app">
       <header className="header">
@@ -73,6 +85,7 @@ function App() {
       {
         isCardSelected ?
         <form className="card-form">
+          <button type='buuton' className="card-form__adv-btn" onClick={() => setIsCardSelected(false)}>{texts.main_back}</button>
           <input type="number" className='card-form__input' placeholder={texts.card_data_placeholder} value={cardNumber} onChange={handleCardInput} maxLength='16'/>
           <input type="number" className='card-form__input' placeholder={texts.amount_placeholder} value={withdrawValue} onChange={handleWithdrawInput}/>
           <span className="card-form__adv">{texts.advertisement_button_text}</span>
@@ -118,6 +131,10 @@ function App() {
             }
           </div>
         </div>
+      }
+      {
+        isWithdrawOk &&
+        <span className="ok-banner">{texts.successfully_withdrawn}</span>
       }
     </div>
   );
