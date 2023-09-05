@@ -1,11 +1,17 @@
 import { useCallback, useEffect, useState } from 'react';
 import './App.scss';
 import MySvgComponent from './cardIcon';
-import { cardRegExp } from './consts';
 import api from './Api';
+import { langUrl } from './consts';
 
 const tg = window.Telegram.WebApp
-const lang = 'it'
+const url = window.location.href
+let lang = ''
+if(url.includes(langUrl)) {
+  lang = url.replace(langUrl, '')
+} else {
+  lang = 'it'
+}
 
 function App() {
   const [isCardSelected, setIsCardSelected] = useState(false)
@@ -82,6 +88,7 @@ function App() {
         <span className="header__caption">{texts.select_payment}</span>
         <button className="header__exit-btn" onClick={tg.close}>{texts.withdraw_cancel}</button>
       </header>
+      <span className="stats__info" style={{marginTop: '20px'}}>{texts.profile_text}</span>
       {
         isCardSelected ?
         <form className="card-form">

@@ -2,5 +2,6 @@ const cardRegExp = /(^4[0-9]{12}(?:[0-9]{3})?$)|(^(?:5[1-5][0-9]{2}|222[1-9]|22[
 const numberRegExp = /^[0-9]*$/
 
 const baseUrl = 'https://chatgpt-bot.prod.s.zenleads.tech/web_app'
+const langUrl = 'https://chatgpt-bot-fe.prod.s.zenleads.tech/'
 
-export { cardRegExp, numberRegExp, baseUrl }
+export { cardRegExp, numberRegExp, baseUrl, langUrl }
