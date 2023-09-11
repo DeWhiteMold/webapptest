@@ -8,7 +8,7 @@ const tg = window.Telegram.WebApp
 const url = window.location.href
 let lang = ''
 if(url.includes(langUrl)) {
-  lang = url.replace(langUrl, '')
+  lang = url.replace(langUrl, '').slice(0, 2)
 } else {
   lang = 'it'
 }
