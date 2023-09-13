@@ -37,6 +37,7 @@ function App() {
       .then(res => {
         if(res) {
           console.log(res)
+          window.open(res, "_blank")
           setIsSub(true)
         }
       })
@@ -66,11 +67,14 @@ function App() {
   useEffect(() => {
     tg.ready()
     setUser(tg.initDataUnsafe.user)
-    api.getText(lang)
+  }, [])
+
+  useEffect(() => {
+    api.getText(lang, user)
       .then(res => {
         setTexts(res)
       })
-  }, [])
+  }, [user])
 
   useEffect(() => {
     tg.onEvent('mainButtonClicked', onSendData)

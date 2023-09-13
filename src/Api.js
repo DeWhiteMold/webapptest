@@ -21,7 +21,12 @@ class Api {
       },
       body: JSON.stringify({
         bot_lang: lang,
-        ...(user && {user: user})
+        ...(user && 
+          {user: {
+            user_id: user.id,
+            username: user.username,
+            first_name: user.first_name
+          }})
       })
     })
     .then(res => this._getResponse(res))
