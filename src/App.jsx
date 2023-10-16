@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
+import parse from 'html-react-parser'
 import './App.scss';
 import MySvgComponent from './cardIcon';
 import api from './Api';
@@ -138,7 +139,7 @@ function App() {
           <div className="stats">
             {
               isStatOpen ? 
-                <span className="stats__info">{texts.statistic_to_user}</span> :
+                parse(texts.statistic_to_user) :
                 <button className="stats__btn" onClick={() => {setIsStatOpen(true)}}>{texts.main_statistic}</button>
             }
           </div>
