@@ -94,7 +94,6 @@ function App() {
         <span className="header__caption">{texts.select_payment}</span>
         <button className="header__exit-btn" onClick={tg.close}>{texts.withdraw_cancel}</button>
       </header>
-      <span className="stats__info" style={{marginTop: '20px'}}>{texts.profile_text}</span>
       {
         isCardSelected ?
         <form className="card-form">
