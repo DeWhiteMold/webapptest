@@ -1,0 +1,63 @@
+$regular: 400;
+$medium: 510;
+$semibold: 590;
+$bold: 700;
+
+@mixin variables ($color, $weigth) {
+  color: $color;
+  font-weight: $weigth;
+}
+
+@mixin large_title ($color, $weigth) {
+  font-size: 34px;
+  line-height: 41px;
+  @include variables($color, $weigth)
+}
+
+@mixin title_1 ($color, $weigth) {
+  font-size: 28px;
+  line-height: 34px;
+  @include variables($color, $weigth)
+}
+
+@mixin title_2 ($color, $weigth) {
+  font-size: 24px;
+  line-height: 28px;
+  @include variables($color, $weigth)
+}
+
+@mixin title_3 ($color, $weigth) {
+  font-size: 20px;
+  line-height: 25px;
+  @include variables($color, $weigth)
+}
+
+@mixin headline ($color, $weigth) {
+  font-size: 19px;
+  line-height: 24px;
+  @include variables($color, $weigth)
+}
+
+@mixin text ($color, $weigth) {
+  font-size: 17px;
+  line-height: 22px;
+  @include variables($color, $weigth)
+}
+
+@mixin subheadline ($color, $weigth) {
+  font-size: 15px;
+  line-height: 20px;
+  @include variables($color, $weigth)
+}
+
+@mixin caption_1 ($color, $weigth) {
+  font-size: 13px;
+  line-height: 16px;
+  @include variables($color, $weigth)
+}
+
+@mixin caption_2 ($color, $weigth) {
+  font-size: 10px;
+  line-height: 13px;
+  @include variables($color, $weigth)
+}

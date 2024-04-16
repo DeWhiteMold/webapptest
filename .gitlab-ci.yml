@@ -1,4 +1,0 @@
-include:
-  - project: sre/ci
-    ref: main
-    file: .js.gitlab-ci.yml
