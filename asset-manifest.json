@@ -1,9 +1,11 @@
 {
   "files": {
-    "main.css": "/webapptest/static/css/main.94e183bc.css",
-    "main.js": "/webapptest/static/js/main.6391ff4f.js",
+    "main.css": "/webapptest/static/css/main.22d6221e.css",
+    "main.js": "/webapptest/static/js/main.b926566c.js",
     "static/media/SF-Pro.ttf": "/webapptest/static/media/SF-Pro.4c7ba8b9b77fe52bdb7c.ttf",
-    "static/media/SF-Pro-Rounded-Bold.otf": "/webapptest/static/media/SF-Pro-Rounded-Bold.a467dbaac5b4a0fe0bad.otf",
+    "static/media/perks_bg.png": "/webapptest/static/media/perks_bg.ef27c40477e0ceb350a6.png",
+    "static/media/perks_gift.png": "/webapptest/static/media/perks_gift.f4a98c06151ccf311399.png",
+    "static/media/SF-Pro-Rounded-Bold.otf": "/webapptest/static/media/SF-Pro-Rounded-Bold.37012c1f760732d3daba.otf",
     "static/media/main_bg.png": "/webapptest/static/media/main_bg.9b93c1cca14604d9d758.png",
     "static/media/Coin.png": "/webapptest/static/media/Coin.12b28131ac5328b53217.png",
     "static/media/House_01.svg": "/webapptest/static/media/House_01.b7a7589070790021fdc1.svg",
@@ -11,12 +13,13 @@
     "index.html": "/webapptest/index.html",
     "static/media/Trending_Up.svg": "/webapptest/static/media/Trending_Up.45f1029b1e8b306e2738.svg",
     "static/media/loader.svg": "/webapptest/static/media/loader.e2a64d803e9f76bc538b.svg",
+    "static/media/arrow_right_24.svg": "/webapptest/static/media/arrow_right_24.414ab75f2b63c689a519ce480e76b3f4.svg",
     "static/media/User_02.svg": "/webapptest/static/media/User_02.aff80a215dfd8d0e65c1.svg",
-    "main.94e183bc.css.map": "/webapptest/static/css/main.94e183bc.css.map",
-    "main.6391ff4f.js.map": "/webapptest/static/js/main.6391ff4f.js.map"
+    "main.22d6221e.css.map": "/webapptest/static/css/main.22d6221e.css.map",
+    "main.b926566c.js.map": "/webapptest/static/js/main.b926566c.js.map"
   },
   "entrypoints": [
-    "static/css/main.94e183bc.css",
-    "static/js/main.6391ff4f.js"
+    "static/css/main.22d6221e.css",
+    "static/js/main.b926566c.js"
   ]
 }
