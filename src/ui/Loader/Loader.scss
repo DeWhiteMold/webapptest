@@ -1,0 +1,15 @@
+@use 'src/styles/colors.scss';
+
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
+
+.loader {
+  background-color: colors.$black;
+  mask: url('../../images/loader.svg') no-repeat center;
+  mask-size: contain;
+  display: flex;
+  width: 24px;
+  height: 24px;
+  animation: spin 1s linear infinite;
+}

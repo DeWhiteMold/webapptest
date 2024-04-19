@@ -1,9 +1,195 @@
-@use '../../styles/fonts' as f;
-@use '../../styles/colors' as c;
+@use 'src/styles/fonts.scss';
+@use 'src/styles/colors.scss';
 
 .button {
   border: none;
   background: transparent;
   padding: 0;
   margin: 0;
+  font-weight: fonts.$semibold;
+  transition: opacity ease-out 75ms, background-color ease-out 75ms, color ease-out 75ms;
+  height: min-content;
+
+  &:hover {
+    cursor: pointer
+  }
+
+  &_shape {
+    &_rounded {
+      @include fonts.subheadline;
+      padding: 8px 12px 8px 12px;
+      border-radius: 20px;
+    }
+
+    &_default {
+      @include fonts.subheadline;
+      padding: 12px 14px 12px 14px;
+      border-radius: 12px;
+    }
+
+    &_large {
+      @include fonts.text;
+      padding: 15px 12px 15px 12px;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      width: Calc(100% - 20px);
+      margin: 0 10px;
+    }
+  }
+
+  &_type {
+    &_default {
+      background-color: colors.$button_color;
+      color: colors.$button_text_color;
+
+      .loader {
+        background-color: colors.$button_text_color;
+      }
+
+      &:hover {
+        opacity: .85;
+      }
+
+      &:active {
+        opacity: .65;
+      }
+
+      &:disabled {
+        cursor: default;
+        opacity: .35;
+      }
+    }
+
+    &_blazed {
+      background-color: colors.$secondary_fill;
+      color: colors.$link_color;
+
+      .loader {
+        background-color: colors.$link_color;
+      }
+
+      &:hover {
+        background-color: #007AFF33;
+
+        &:disabled {
+          background-color: colors.$secondary_fill;
+          color: colors.$link_color;
+        }
+      }
+
+      &:active {
+        background-color: #007AFF4d;
+
+        &:disabled {
+          background-color: colors.$secondary_fill;
+          color: colors.$link_color;
+        }
+      }
+
+      &:disabled {
+        cursor: default;
+        opacity: .35;
+      }
+    }
+
+    &_white {
+      background-color: colors.$white;
+      color: colors.$plain_fg;
+
+      .loader {
+        background-color: colors.$plain_fg;
+      }
+
+      &:hover {
+        opacity: .85;
+      }
+
+      &:active {
+        opacity: .65;
+      }
+
+      &:disabled {
+        cursor: default;
+        opacity: .35;
+      }
+    }
+
+    &_gray {
+      background-color: colors.$plain_bg;
+      color: colors.$plain_fg;
+
+      .loader {
+        background-color: colors.$plain_fg;
+      }
+
+      &:hover {
+        opacity: .85;
+      }
+
+      &:active {
+        opacity: .65;
+      }
+
+      &:disabled {
+        cursor: default;
+        opacity: .35;
+      }
+    }
+
+    &_outline {
+      border: 1px solid colors.$outline;
+      background-color: transparent;
+      color: colors.$plain_fg;
+
+      .loader {
+        background-color: colors.$plain_fg;
+      }
+
+      &:hover {
+        opacity: .85;
+      }
+
+      &:active {
+        opacity: .65;
+      }
+
+      &:disabled {
+        cursor: default;
+        opacity: .35;
+      }
+    }
+
+    &_plain {
+      background-color: transparent;
+      color: colors.$link_color;
+
+      .loader {
+        background-color: colors.$link_color;
+      }
+
+      &:hover {
+        background-color: #007AFF0d;
+
+        &:disabled {
+          background-color: colors.$secondary_fill;
+          color: colors.$link_color;
+        }
+      }
+
+      &:active {
+        background-color: #007AFF1a;
+
+        &:disabled {
+          background-color: colors.$secondary_fill;
+          color: colors.$link_color;
+        }
+      }
+
+      &:disabled {
+        cursor: default;
+        opacity: .35;
+      }
+    }
+  }
 }

@@ -1,16 +1,17 @@
 import React, { FC } from 'react'
 import './Button.scss'
 import ButtonProps from './ButtonProps'
+import Loader from 'ui/Loader/Loader'
 
-const Button: FC<ButtonProps> = ({shape, type, disabled, loading, children, action, className}) => {
+const Button: FC<ButtonProps> = ({shape, type, disabled, loading, children, action, className, onClick}) => {
   const getBtnTypeClassname = () => {
     switch (type) {
       case 'Default':
         return 'button_type_default'
       case 'Bazeled':
         return 'button_type_blazed'
-      case 'Ghost':
-        return 'button_type_ghost'
+      case 'White':
+        return 'button_type_white'
       case 'Gray':
         return 'button_type_gray'
       case 'Outline':
@@ -43,12 +44,12 @@ const Button: FC<ButtonProps> = ({shape, type, disabled, loading, children, acti
         ${getBtnTypeClassname()} 
         ${getBtnShapeClassname()} 
         ${loading && 'button_loading'} 
-        ${disabled && 'button_disabled'}
         ${className}
         `
       }
+      onClick={onClick}
     >
-      {children}
+      {loading ? <Loader/> : children}
     </button>
   )
 }

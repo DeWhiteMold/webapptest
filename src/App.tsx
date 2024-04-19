@@ -1,13 +1,25 @@
 import React from 'react'
-import './App.css'
+import './App.scss'
 import { Route, Routes } from 'react-router-dom'
-import Main from './components/Main/Main'
+import Main from 'components/Main/Main'
+import Menu from 'components/Menu/Menu'
+import WebApp from '@twa-dev/sdk'
+import Perks from 'components/Perks/Perks'
+import Gifts from 'components/Gifts/Gifts'
 
 function App() {
+  try {WebApp.showAlert(String(WebApp.initDataUnsafe.user?.id))} catch {}
   return (
-    <Routes>
-      <Route path='/' element={<Main />} />
-    </Routes>
+    <div className='app'>
+      <Routes>
+        <Route path='*' element={<Main />} />
+        <Route path='/perks' element={<Perks />}/>
+        <Route path='/gifts' element={<Gifts />} />
+        <Route path='/rating' element={<Main />} />
+        <Route path='/profile' element={<Main />} />
+      </Routes>
+      <Menu />
+    </div>
   )
 }
 
