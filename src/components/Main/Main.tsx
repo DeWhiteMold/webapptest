@@ -7,10 +7,14 @@ import { ranks } from 'consts/consts'
 import { displayDightsWithCommas } from 'utilits/displayDightsWithCommas'
 import arrowImg from 'images/Arrow/arrow_right_24.svg'
 import { useDebouncedCallback } from 'use-debounce'
+import LevelPopup from './LevelPopup/LevelPopup'
+import WebApp from '@twa-dev/sdk'
 
 const Main: FC = () => {
   const [clicks, setClicks] = useState<number>(123456)
   const [nextLevelRequied, setNextLevelRequied] = useState<number>(150000)
+
+  const [isNewLevelPopupOpen, setIsNewLevelPopupOpen] = useState(true)
 
   const [clickEvents, setClickEvents] = useState<number[]>([])
   const rank = {rank: 3, level: 3}
@@ -23,6 +27,7 @@ const Main: FC = () => {
     setClickEvents([...clickEvents, 1])
     setClicks(clicks => clicks + 1)
     clearClicksStack()
+    WebApp.HapticFeedback.impactOccurred('medium')
   }
 
   return (
@@ -67,6 +72,13 @@ const Main: FC = () => {
           baseBgColor='#00000010'
         />
       </section>
+      {
+        isNewLevelPopupOpen &&
+          <LevelPopup 
+            onClose={() => setIsNewLevelPopupOpen(false)}
+          />
+      }
+      
     </div>
   )
 }

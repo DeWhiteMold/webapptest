@@ -1,26 +1,40 @@
 import React, { FC, useState } from 'react'
 import './Perks.scss'
-import Button from 'ui/Button/Button'
 import coinImg from 'images/Coin.png'
 import { useNavigate } from 'react-router-dom'
+import ItemPopup from './ItemPopup/ItemPopup'
+import WebApp from '@twa-dev/sdk'
 
 const Perks: FC = () => {
   const navigate = useNavigate()
   const [isPerksTab, setIsPerksTab] = useState<boolean>(true)
+  const [isPopupOpen, setIsPopupOpen] = useState<boolean>(false)
+
+  const openPopup = () => {
+    setIsPopupOpen(true)
+    WebApp.HapticFeedback.notificationOccurred('warning')
+  }
   return (
     <div className='perks'>
-      <h1 className="perks__title">Perks</h1>
+      <section className="perks__balance">
+        <span className="perks__balance-caption">Your Balance</span>
+        <div className="perks__balance-box">
+          <img src={coinImg} alt='' className="perks__balance-icon" />
+          <span className="perks__balance-coins">144,880</span>
+        </div>
+      </section>
       <section className="gifts">
-        <h4 className="gifts__title">Gift for participation</h4>
-        <span className="gifts__subtitle">Take part in the promotion and get free perks</span>
-        <Button
+        <div className="gifts-icon">🎁</div>
+        <div className="gifts__text">
+          <h4 className="gifts__title">Gift for participation</h4>
+          <span className="gifts__subtitle">Take part in the promotion and get free perks</span>
+        </div>
+        <button
           className='gifts__button'
           onClick={() => navigate('/gifts')}
-        >
-          Gifts
-        </Button>
+        />
       </section>
-      <section className="boosters">
+      {/* <section className="boosters">
         <h3 className="boosters__title">Free daily boosters</h3>
         <div className="boosters__cards">
           <div className="booster-card">
@@ -38,7 +52,7 @@ const Perks: FC = () => {
             <span className="booster-card__icon">💸</span>
           </div>
         </div>
-      </section>
+      </section> */}
       <section className="shop">
         <div className="shop__tabs">
           <button
@@ -59,40 +73,44 @@ const Perks: FC = () => {
           true &&
             <div className="shop__list">
               <div className="shop__item">
-                <span className="shop__item-icon">🐣</span>
-                <div className="shop__item-info">
-                  <span className="shop__item-name">sdfsdf</span>
-                  <span className="shop__item-description">asdfsadfsdf</span>
+                <div className="shop__item-icon">👾</div>
+                <div className="shop__item-text">
+                  <h4 className="shop__item-title">
+                    Clicks
+                    <span className="shop__item-lvl">lvl 3</span>
+                  </h4>
+                  <span className="shop__item-subtitle">Up your coins per click</span>
                 </div>
-                <Button className="shop__item-button">123 <img src={coinImg} alt="" className='shop__item-button-icon' /></Button>
+                <button
+                  className='shop__item-button'
+                  onClick={openPopup}
+                />
               </div>
               <div className="shop__item">
-                <span className="shop__item-icon">🐣</span>
-                <div className="shop__item-info">
-                  <span className="shop__item-name">sdfsdf</span>
-                  <span className="shop__item-description">asdfsadfsdf</span>
+                <div className="shop__item-icon">⌛</div>
+                <div className="shop__item-text">
+                  <h4 className="shop__item-title">
+                  Passive
+                    <span className="shop__item-lvl">lvl 3</span>
+                  </h4>
+                  <span className="shop__item-subtitle">Up your coins on active screen</span>
                 </div>
-                <Button className="shop__item-button">123 <img src={coinImg} alt="" className='shop__item-button-icon' /></Button>
-              </div>
-              <div className="shop__item">
-                <span className="shop__item-icon">🐣</span>
-                <div className="shop__item-info">
-                  <span className="shop__item-name">sdfsdf</span>
-                  <span className="shop__item-description">asdfsadfsdf</span>
-                </div>
-                <Button className="shop__item-button">123 <img src={coinImg} alt="" className='shop__item-button-icon' /></Button>
-              </div>
-              <div className="shop__item">
-                <span className="shop__item-icon">🐣</span>
-                <div className="shop__item-info">
-                  <span className="shop__item-name">sdfsdf</span>
-                  <span className="shop__item-description">asdfsadfsdf</span>
-                </div>
-                <Button className="shop__item-button">123 <img src={coinImg} alt="" className='shop__item-button-icon' /></Button>
+                <button
+                  className='shop__item-button'
+                  onClick={openPopup}
+                />
               </div>
             </div>
         }
       </section>
+      {
+        isPopupOpen &&
+          <ItemPopup
+            onClose={() => setIsPopupOpen(false)}
+            onSubmit={() => setIsPopupOpen(false)}
+          />
+      }
+      
     </div>
   )
 }

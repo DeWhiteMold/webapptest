@@ -1,7 +1,8 @@
-@use 'src/styles/fonts.scss';
-@use 'src/styles/colors.scss';
+@import 'src/styles/fonts.scss';
+@import 'src/styles/colors.scss';
 
 .main {
+  position: relative;
   min-height: calc(100vh - 51px);
   background-image: url(../../images/main_bg.png);
   background-position: center;
@@ -19,7 +20,7 @@
   padding: 10px 16px;
   border-radius: 16px;
   gap: 10px;
-  background-color: colors.$bg_color;
+  background-color: $bg_color;
 
   &__icon {
     background-image: url(../../images/challenge.png);
@@ -38,15 +39,11 @@
   }
 
   &__name {
-    @include fonts.text;
-    color: colors.$text_color;
-    font-weight: fonts.$medium;
+    @include text($text_color, $medium);
   }
 
   &__caption {
-    @include fonts.subheadline;
-    color: colors.$link_color;
-    font-weight: fonts.$regular;
+    @include subheadline($link_color, $regular);
   }
 }
 
@@ -57,18 +54,17 @@
   align-items: center;
   margin-top: 24px;
   gap: 8px;
-  color: colors.$text_color;
 
   &__clicks {
     font-family: 'San Francisco Rounded';
     font-size: 64px;
     line-height: 64px;
-    font-weight: fonts.$bold;
+    font-weight: $bold;
+    color: $text_color
   }
 
   &__info {
-    @include fonts.text;
-    font-weight: fonts.$medium;
+    @include text ($text_color, $medium);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -77,7 +73,7 @@
 
   &__divider {
     display: flex;
-    background-color: colors.$white;
+    background-color: $white;
     border-radius: 50%;
     width: 8px;
     height: 8px;
@@ -131,8 +127,6 @@
   }
 
   &__clicks {
-    @include fonts.subheadline;
-    color: colors.$text_color;
-    font-weight: fonts.$semibold;
+    @include subheadline ($text_color, $semibold);
   }
 }

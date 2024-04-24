@@ -1,0 +1,83 @@
+@import 'src/styles/fonts.scss';
+@import 'src/styles/colors.scss';
+
+.rating-card {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: $bg_color;
+  border-radius: 16px;
+  padding: 12px 16px;
+  border: 1px solid $outline;
+
+  &__place {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 24px;
+    min-height: 24px;
+    border-radius: 4px;
+    background-color: $surface_dark;
+
+    @include caption_1($text_color, $bold);
+
+    &_long {
+      @include caption_2($text_color, $bold)
+    }
+
+    &_first {
+      background-color: #E2C317;
+    }
+
+    &_second {
+      background: linear-gradient(180deg, #C0C1BF 0%, #A2A2A2 100%);
+      ;
+    }
+
+    &_third {
+      background: linear-gradient(180deg, #D68000 0%, #FFAE35 100%);
+    }
+  }
+
+  &__avatar {
+    min-width: 48px;
+    min-height: 48px;
+    max-width: 48px;
+    max-height: 48px;
+    border-radius: 50%;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+  }
+
+  &__username {
+    @include subheadline($text_color, $semibold);
+  }
+
+  &__level {
+    letter-spacing: -6px;
+    font-size: 16px;
+  }
+
+  &__balance {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+  }
+
+  &__amount {
+    @include subheadline($text_color, $semibold);
+  }
+
+  &__coin-icon {
+    display: flex;
+    width: 24px;
+    height: 24px;
+    background-image: url(../../../images/Coin.png);
+    background-size: contain;
+  }
+}

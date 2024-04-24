@@ -1,12 +1,13 @@
-@use 'src/styles/fonts.scss';
-@use 'src/styles/colors.scss';
+@import 'src/styles/fonts.scss';
+@import 'src/styles/colors.scss';
 
 .menu {
   position:-webkit-sticky;
   position: sticky;
   bottom: 0;
   display: flex;
-  background-color: colors.$bg_color;
+  background-color: $bg_color;
+  z-index: 15;
 
   &__button {
     display: flex;
@@ -24,7 +25,7 @@
       width: 28px;
       height: 28px;
       mask-size: contain;
-      background-color: colors.$hint_color;
+      background-color: $hint_color;
 
       &_main {
         mask: url('../../images/Navigation/House_01.svg') no-repeat center;
@@ -44,18 +45,16 @@
     }
 
     &-name {
-      @include fonts.caption_2;
-      font-weight: fonts.$semibold;
-      color: colors.$hint_color;
+      @include caption_2($hint_color, $semibold);
     }
 
     &_current {
       .menu__button-icon {
-        background-color: colors.$accent_text_color;
+        background-color: $accent_text_color;
       }
 
       .menu__button-name {
-        color: colors.$accent_text_color;
+        color: $accent_text_color;
       }
     }
   }

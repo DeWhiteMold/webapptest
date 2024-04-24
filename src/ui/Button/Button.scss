@@ -1,12 +1,12 @@
-@use 'src/styles/fonts.scss';
-@use 'src/styles/colors.scss';
+@import 'src/styles/fonts.scss';
+@import 'src/styles/colors.scss';
 
 .button {
+  display: flex;
   border: none;
   background: transparent;
   padding: 0;
   margin: 0;
-  font-weight: fonts.$semibold;
   transition: opacity ease-out 75ms, background-color ease-out 75ms, color ease-out 75ms;
   height: min-content;
 
@@ -16,19 +16,19 @@
 
   &_shape {
     &_rounded {
-      @include fonts.subheadline;
+      @include subheadline($text_color, $semibold);
       padding: 8px 12px 8px 12px;
       border-radius: 20px;
     }
 
     &_default {
-      @include fonts.subheadline;
-      padding: 12px 14px 12px 14px;
+      @include subheadline($text_color, $semibold);
+      padding: 12px 16px;
       border-radius: 12px;
     }
 
     &_large {
-      @include fonts.text;
+      @include text($text_color, $semibold);
       padding: 15px 12px 15px 12px;
       border-radius: 10px;
       display: flex;
@@ -40,11 +40,11 @@
 
   &_type {
     &_default {
-      background-color: colors.$button_color;
-      color: colors.$button_text_color;
+      background-color: $button_color;
+      color: $button_text_color;
 
       .loader {
-        background-color: colors.$button_text_color;
+        background-color: $button_text_color;
       }
 
       &:hover {
@@ -62,19 +62,19 @@
     }
 
     &_blazed {
-      background-color: colors.$secondary_fill;
-      color: colors.$link_color;
+      background-color: $secondary_fill;
+      color: $link_color;
 
       .loader {
-        background-color: colors.$link_color;
+        background-color: $link_color;
       }
 
       &:hover {
         background-color: #007AFF33;
 
         &:disabled {
-          background-color: colors.$secondary_fill;
-          color: colors.$link_color;
+          background-color: $secondary_fill;
+          color: $link_color;
         }
       }
 
@@ -82,8 +82,8 @@
         background-color: #007AFF4d;
 
         &:disabled {
-          background-color: colors.$secondary_fill;
-          color: colors.$link_color;
+          background-color: $secondary_fill;
+          color: $link_color;
         }
       }
 
@@ -94,11 +94,11 @@
     }
 
     &_white {
-      background-color: colors.$white;
-      color: colors.$plain_fg;
+      background-color: $white;
+      color: $plain_fg;
 
       .loader {
-        background-color: colors.$plain_fg;
+        background-color: $plain_fg;
       }
 
       &:hover {
@@ -116,11 +116,11 @@
     }
 
     &_gray {
-      background-color: colors.$plain_bg;
-      color: colors.$plain_fg;
+      background-color: $plain_bg;
+      color: $plain_fg;
 
       .loader {
-        background-color: colors.$plain_fg;
+        background-color: $plain_fg;
       }
 
       &:hover {
@@ -138,12 +138,12 @@
     }
 
     &_outline {
-      border: 1px solid colors.$outline;
+      border: 1px solid $outline;
       background-color: transparent;
-      color: colors.$plain_fg;
+      color: $plain_fg;
 
       .loader {
-        background-color: colors.$plain_fg;
+        background-color: $plain_fg;
       }
 
       &:hover {
@@ -162,18 +162,18 @@
 
     &_plain {
       background-color: transparent;
-      color: colors.$link_color;
+      color: $link_color;
 
       .loader {
-        background-color: colors.$link_color;
+        background-color: $link_color;
       }
 
       &:hover {
         background-color: #007AFF0d;
 
         &:disabled {
-          background-color: colors.$secondary_fill;
-          color: colors.$link_color;
+          background-color: $secondary_fill;
+          color: $link_color;
         }
       }
 
@@ -181,8 +181,8 @@
         background-color: #007AFF1a;
 
         &:disabled {
-          background-color: colors.$secondary_fill;
-          color: colors.$link_color;
+          background-color: $secondary_fill;
+          color: $link_color;
         }
       }
 

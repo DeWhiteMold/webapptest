@@ -1,19 +1,25 @@
-import React, { FC } from 'react'
+import React, { FC, useEffect } from 'react'
 import './Gifts.scss'
 import Button from 'ui/Button/Button'
 import { useNavigate } from 'react-router-dom'
+import WebApp from '@twa-dev/sdk'
 
 const Gifts: FC = () => {
   const navigate = useNavigate()
+
+  WebApp.BackButton.onClick(() => {
+    navigate('/perks')
+    WebApp.BackButton.hide()
+  })
+
+  useEffect(() => {
+    try {
+      WebApp.BackButton.show()
+    } catch {}
+  }, [])
   return (
     <div className='gifts-page'>
-      <div className="gifts-page__header">
-        <button
-          className="gifts-page__return-button"
-          onClick={() => navigate('/perks')}
-        />
-        <h1 className="gifts-page__title">Gifts</h1>
-      </div>
+      <h1 className="gifts-page__title">Gifts</h1>
       <div className="gifts-page__list">
         <div className="gift">
           <img src='https://images.squarespace-cdn.com/content/v1/5ea237e587e03021f9ef8cc2/1591632715798-GZ810CZ0DMW3J0HD2ODF/Group-members.jpg' alt='' className="gift__icon"/>

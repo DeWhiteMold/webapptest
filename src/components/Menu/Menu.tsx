@@ -29,7 +29,7 @@ const Menu: FC = () => {
       </Link>
       <Link
         to='/profile'
-        className={`menu__button ${location.pathname === '/profile' && 'menu__button_current'}`}
+        className={`menu__button ${(location.pathname === '/profile' || location.pathname === '/settings') && 'menu__button_current'}`}
       >
         <div className="menu__button-icon menu__button-icon_profile"/>
         <span className="menu__button-name">Profile</span>

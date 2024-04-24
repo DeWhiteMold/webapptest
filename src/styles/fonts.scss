@@ -3,47 +3,65 @@ $medium: 510;
 $semibold: 590;
 $bold: 700;
 
-@mixin large_title {
+@mixin large_title ($color, $weight) {
   font-size: 34px;
   line-height: 41px;
+  color: $color;
+  font-weight: $weight;
 }
 
-@mixin title_1 {
+@mixin title_1 ($color, $weight) {
   font-size: 28px;
   line-height: 34px;
+  color: $color;
+  font-weight: $weight;
 }
 
-@mixin title_2 {
+@mixin title_2 ($color, $weight) {
   font-size: 24px;
   line-height: 28px;
+  color: $color;
+  font-weight: $weight;
 }
 
-@mixin title_3 {
+@mixin title_3 ($color, $weight) {
   font-size: 20px;
   line-height: 25px;
+  color: $color;
+  font-weight: $weight;
 }
 
-@mixin headline {
+@mixin headline ($color, $weight) {
   font-size: 19px;
   line-height: 24px;
+  color: $color;
+  font-weight: $weight;
 }
 
-@mixin text {
+@mixin text ($color, $weight) {
   font-size: 17px;
   line-height: 22px;
+  color: $color;
+  font-weight: $weight;
 }
 
-@mixin subheadline {
+@mixin subheadline ($color, $weight) {
   font-size: 15px;
   line-height: 20px;
+  color: $color;
+  font-weight: $weight;
 }
 
-@mixin caption_1 {
+@mixin caption_1 ($color, $weight) {
   font-size: 13px;
   line-height: 16px;
+  color: $color;
+  font-weight: $weight;
 }
 
-@mixin caption_2 {
+@mixin caption_2 ($color, $weight) {
   font-size: 10px;
   line-height: 13px;
+  color: $color;
+  font-weight: $weight;
 }

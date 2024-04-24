@@ -1,0 +1,30 @@
+@import 'src/styles/fonts.scss';
+@import 'src/styles/colors.scss';
+
+.rating {
+  min-height: calc(100vh - 51px);
+  background-image: url(../../images/rating_bg.png);
+  background-position: top;
+  background-size: 300% 150%;
+  box-sizing: border-box;
+  padding: 16px;
+  gap: 12px;
+
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    @include large_title($text_color, $semibold);
+  }
+
+  &__subtitle {
+    @include title_2($text_color, $semibold);
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
+}

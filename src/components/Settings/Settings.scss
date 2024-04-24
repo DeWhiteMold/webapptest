@@ -1,0 +1,46 @@
+@import 'src/styles/fonts.scss';
+@import 'src/styles/colors.scss';
+
+.settings {
+  min-height: calc(100vh - 51px);
+  box-sizing: border-box;
+  padding: 16px;
+
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    @include large_title($text_color, $semibold);
+  }
+
+  &__subtitle {
+    margin-left: 16px;
+    @include caption_1($hint_color, $regular);
+    text-transform: uppercase;
+    margin-top: 28px;
+  }
+
+  &__box {
+    display: flex;
+    flex-direction: column;
+    border-radius: 16px;
+    background-color: $bg_color;
+    margin: 8px 0;
+  }
+
+  &__line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 9px 16px;
+  }
+
+  &__name {
+    @include text($text_color, $regular);
+  }
+
+  &__caption {
+    margin-left: 16px;
+    @include caption_1($hint_color, $regular);
+  }
+}
