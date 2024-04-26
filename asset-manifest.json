@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/webapptest/static/css/main.630f45bd.css",
-    "main.js": "/webapptest/static/js/main.590f36b1.js",
+    "main.js": "/webapptest/static/js/main.b7eb802b.js",
     "static/media/SF-Pro.ttf": "/webapptest/static/media/SF-Pro.4c7ba8b9b77fe52bdb7c.ttf",
     "static/media/perks_bg.png": "/webapptest/static/media/perks_bg.ef27c40477e0ceb350a6.png",
     "static/media/onboarding_bg.png": "/webapptest/static/media/onboarding_bg.267d672eb39b6989e2c4.png",
@@ -25,10 +25,10 @@
     "static/media/Check.svg": "/webapptest/static/media/Check.ecf3c44aefbfdbb80816.svg",
     "static/media/Chevron_Left.svg": "/webapptest/static/media/Chevron_Left.42811182289983847809.svg",
     "main.630f45bd.css.map": "/webapptest/static/css/main.630f45bd.css.map",
-    "main.590f36b1.js.map": "/webapptest/static/js/main.590f36b1.js.map"
+    "main.b7eb802b.js.map": "/webapptest/static/js/main.b7eb802b.js.map"
   },
   "entrypoints": [
     "static/css/main.630f45bd.css",
-    "static/js/main.590f36b1.js"
+    "static/js/main.b7eb802b.js"
   ]
 }
