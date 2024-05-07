@@ -1,0 +1,65 @@
+@import 'src/styles/fonts.scss';
+@import 'src/styles/colors.scss';
+
+@keyframes open {
+  0% {
+    transform: translateY(100%);
+  }
+  10% {
+    transform: translateY(0%);
+  }
+  80% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(200%);
+  }
+}
+
+.notification {
+  position: absolute;
+  bottom: 12px;
+  width: calc(100% - 32px);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  background-color: #383838;
+  border-radius: 14px;
+  animation: open 3s ease-out 1;
+  transform: translateY(200%);
+
+  &__icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  &__texts {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1px;
+  }
+
+  &__done-text {
+    @include caption_1($green, $semibold)
+  }
+
+  &__error-text {
+    @include caption_1($destructive_text_color, $semibold)
+  }
+
+  &__title {
+    @include caption_1($text_color, $semibold)
+  }
+
+  &__caption {
+    @include caption_1($text_color, $regular)
+  }
+
+  &__button {
+    @include text($toast_accnt_color, $regular);
+    background-color: transparent;
+    border: none;
+  }
+}

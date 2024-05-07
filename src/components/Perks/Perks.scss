@@ -2,6 +2,7 @@
 @import 'src/styles/colors.scss';
 
 .perks {
+  position: relative;
   min-height: calc(100vh - 51px);
   background-image: 
     linear-gradient(black, black),

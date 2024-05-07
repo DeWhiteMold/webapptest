@@ -1,26 +1,91 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import './Perks.scss'
 import coinImg from 'images/Coin.png'
 import { useNavigate } from 'react-router-dom'
 import ItemPopup from './ItemPopup/ItemPopup'
 import WebApp from '@twa-dev/sdk'
+import { BoostI, PerkI, ShopItemI } from 'types/types'
+import { api } from 'utilits/api'
+import { perkText } from 'consts/consts'
+import { displayDightsWithCommas } from 'utilits/displayDightsWithCommas'
+import Notification from 'ui/Notification/Notification'
 
 const Perks: FC = () => {
   const navigate = useNavigate()
+  const [balance, setBalance] = useState<number>(0)
   const [isPerksTab, setIsPerksTab] = useState<boolean>(true)
-  const [isPopupOpen, setIsPopupOpen] = useState<boolean>(false)
 
-  const openPopup = () => {
-    setIsPopupOpen(true)
+  const [perks, setPerks] = useState<PerkI[]>([])
+  const [boosts, setBoosts] = useState<BoostI[]>([])
+  
+  const [selectedItem, setSelectedItem] = useState<ShopItemI|null>(null)
+  const [isOk, setIsOk] = useState<boolean>(false)
+  const [error, setError] = useState<string>('')
+
+  const getPerks = () => {
+    api.getPerks()
+      .then(setPerks)
+  }
+  const getBoosts = () => {
+    api.getBoosts()
+      .then(setBoosts)
+  }
+  const getBalance = () => {
+    api.getBalance()
+      .then(res => setBalance(res.coin))
+  }
+
+  const openPopup = (item: ShopItemI) => {
+    setSelectedItem(item)
     WebApp.HapticFeedback.notificationOccurred('warning')
   }
+
+  const buyItem = () => {
+    if(selectedItem && selectedItem.type === 'perk') {
+      api.buyPerk(selectedItem.id)
+        .then(() => {
+          setSelectedItem(null)
+          getBalance()
+          getPerks()
+          setIsOk(true)
+          setTimeout(() => setIsOk(false), 5000)
+          WebApp.HapticFeedback.notificationOccurred('success')
+        })
+        .catch(() => {
+          setError('Something wrong')
+          setTimeout(() => setError(''), 5000)
+          setSelectedItem(null)
+        })
+    } else if(selectedItem && selectedItem.type === 'boost') {
+      api.buyBoost(selectedItem.id)
+        .then(() => {
+          setSelectedItem(null)
+          getBalance()
+          getBoosts()
+          setIsOk(true)
+          setTimeout(() => setIsOk(false), 5000)
+          WebApp.HapticFeedback.notificationOccurred('success')
+        })
+        .catch(() => {
+          setError('Something wrong')
+          setTimeout(() => setError(''), 5000)
+          setSelectedItem(null)
+        })
+    }
+  }
+
+  useEffect(() => {
+    getPerks()
+    getBoosts()
+    getBalance()
+  }, [])
   return (
     <div className='perks'>
       <section className="perks__balance">
         <span className="perks__balance-caption">Your Balance</span>
         <div className="perks__balance-box">
           <img src={coinImg} alt='' className="perks__balance-icon" />
-          <span className="perks__balance-coins">144,880</span>
+          <span className="perks__balance-coins">{displayDightsWithCommas(balance)}</span>
         </div>
       </section>
       <section className="gifts">
@@ -69,48 +134,71 @@ const Perks: FC = () => {
           </button>
           <div className={`shop__tabs-indicator ${isPerksTab ? 'shop__tabs-indicator_perks' : 'shop__tabs-indicator_boost'}`}/>
         </div>
-        {
-          true &&
-            <div className="shop__list">
-              <div className="shop__item">
-                <div className="shop__item-icon">👾</div>
-                <div className="shop__item-text">
-                  <h4 className="shop__item-title">
-                    Clicks
-                    <span className="shop__item-lvl">lvl 3</span>
-                  </h4>
-                  <span className="shop__item-subtitle">Up your coins per click</span>
+        <div className="shop__list">
+          {
+            isPerksTab ? 
+              perks.map(p => 
+                <div className="shop__item">
+                  <div className="shop__item-icon">{p.icon_utf}</div>
+                  <div className="shop__item-text">
+                    <h4 className="shop__item-title">
+                      {p.name}
+                      <span className="shop__item-lvl">lvl {p.level}</span>
+                    </h4>
+                    <span className="shop__item-subtitle">
+                      {p.name === 'Click' ? 'Up your coins per click' : 'Up your coins on active screen'}
+                    </span>
+                  </div>
+                  <button
+                    className='shop__item-button'
+                    onClick={() => openPopup({
+                      id: p.id,
+                      icon_utf: p.icon_utf,
+                      text: perkText(p.name, p.performance),
+                      name: p.name,
+                      lvl: p.level,
+                      price: p.price,
+                      type: 'perk'
+                    })}
+                  />
                 </div>
-                <button
-                  className='shop__item-button'
-                  onClick={openPopup}
-                />
-              </div>
-              <div className="shop__item">
-                <div className="shop__item-icon">⌛</div>
-                <div className="shop__item-text">
-                  <h4 className="shop__item-title">
-                  Passive
-                    <span className="shop__item-lvl">lvl 3</span>
-                  </h4>
-                  <span className="shop__item-subtitle">Up your coins on active screen</span>
+              ) :
+              boosts.map(b => 
+                <div className="shop__item">
+                  <div className="shop__item-icon">{b.icon_utf}</div>
+                  <div className="shop__item-text">
+                    <h4 className="shop__item-title">
+                      {b.title}
+                    </h4>
+                    <span className="shop__item-subtitle">Multiply by x{b.performance} for {b.ttl} sec.</span>
+                  </div>
+                  <button
+                    className='shop__item-button'
+                    onClick={() => openPopup({
+                      id: b.id,
+                      icon_utf: b.icon_utf,
+                      text: `Multiply by x${b.performance} for ${b.ttl} sec.`,
+                      name: b.title,
+                      price: b.price,
+                      type: 'boost'
+                    })}
+                  />
                 </div>
-                <button
-                  className='shop__item-button'
-                  onClick={openPopup}
-                />
-              </div>
-            </div>
-        }
+              )
+          }
+        </div>
       </section>
       {
-        isPopupOpen &&
+      selectedItem &&
           <ItemPopup
-            onClose={() => setIsPopupOpen(false)}
-            onSubmit={() => setIsPopupOpen(false)}
+            onClose={() => setSelectedItem(null)}
+            onSubmit={buyItem}
+            item={selectedItem}
+            balance={balance}
           />
       }
-      
+      {isOk && <Notification type='Success'/>}
+      {error !== '' && <Notification type='Error' text={error}/>}
     </div>
   )
 }

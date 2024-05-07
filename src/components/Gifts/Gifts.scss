@@ -2,6 +2,7 @@
 @import 'src/styles/colors.scss';
 
 .gifts-page {
+  position: relative;
   min-height: calc(100vh - 51px);
   background-image: url(../../images/perks_bg.png);
   background-position: left;

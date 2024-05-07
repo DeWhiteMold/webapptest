@@ -2,10 +2,12 @@
 @import 'src/styles/colors.scss';
 
 .profile {
+  position: relative;
   min-height: calc(100vh - 51px);
   box-sizing: border-box;
   padding: 16px;
   gap: 12px;
+  overflow: hidden;
 
   display: flex;
   flex-direction: column;
