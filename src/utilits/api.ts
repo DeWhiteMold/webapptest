@@ -19,7 +19,7 @@ class Api {
 
   private checkError(res: Response) {
     if(!res.ok) {
-      return Promise.reject(`Ошибка: ${res.status}`)
+      return Promise.reject(`Ошибка: ${res.json()}`)
     }
     return
   }
@@ -107,8 +107,23 @@ class Api {
     return fetch(`${this.url}/api/user/referral-code?tgUserId=${this.userId}`)
       .then(this.getResponse)
   }
+
+  getSettings() {
+    return fetch(`${this.url}/api/user/settings?tgUserId=${this.userId}`)
+      .then(this.getResponse)
+  }
+
+  updateFakeName() {
+    return fetch(`${this.url}/api/user/settings/fakename/update?tgUserId=${this.userId}`)
+      .then(this.checkError)
+  }
+
+  updatePrivacy() {
+    return fetch(`${this.url}/api/user/settings/private/update?tgUserId=${this.userId}`)
+      .then(this.checkError)
+  }
 }
-//290796289
+
 const api = new Api('https://hymiside.ru', WebApp.initDataUnsafe.user?.id || 290796289)
 
 export { api }

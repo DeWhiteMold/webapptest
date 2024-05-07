@@ -14,9 +14,16 @@ const Gifts: FC = () => {
   const [selectedLink, setSelectedLink] = useState<string>('')
   const [error, setError] = useState<string>('')
 
+  const showError = (text: string) => {
+    WebApp.HapticFeedback.notificationOccurred('error')
+    setError(text)
+    setTimeout(() => setError(''), 3000);
+  }
+
   const getGifts = () => {
     api.getUserGifts()
       .then(setGifts)
+      .catch(err => showError(err.error))
   }
 
   const openLink = (link: string, id: number) => {
@@ -30,9 +37,7 @@ const Gifts: FC = () => {
         setGifts(editedGifts)
       })
       .catch(err => {
-        setError('No subscription')
-        setTimeout(() => setError(''), 5000)
-        WebApp.HapticFeedback.notificationOccurred('success')
+        showError(err.error)
       })
       .finally(() => setSelectedLink(''))
   }

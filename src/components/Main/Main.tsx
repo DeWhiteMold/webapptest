@@ -11,6 +11,7 @@ import { api } from 'utilits/api'
 import { LevelI } from 'types/types'
 import { initialLevel } from 'consts/consts'
 import Countdown from 'react-countdown'
+import Notification from 'ui/Notification/Notification'
 
 const Main: FC = () => {
   const [clicks, setClicks] = useState<number>(0)
@@ -19,10 +20,17 @@ const Main: FC = () => {
   const [rating, setRating] = useState<number>(0)
   const [multiplayer, setMultiplayer] = useState<number>(1)
   const [expireDate, setExpireDate] = useState<string>('')
+  const [error, setError] = useState<string>('')
 
   const [isNewLevelPopupOpen, setIsNewLevelPopupOpen] = useState(false)
 
   const [clickEvents, setClickEvents] = useState<number[]>([])
+
+  const showError = (text: string) => {
+    WebApp.HapticFeedback.notificationOccurred('error')
+    setError(text)
+    setTimeout(() => setError(''), 3000);
+  }
 
   const clearClicksStack = useDebouncedCallback(() => {
     api.updateBalance(clickEvents.length * multiplayer)
@@ -50,6 +58,7 @@ const Main: FC = () => {
         refreshInitalInfo() :
         refreshBalance()
       })
+      .catch(err => showError(err.error))
     setClickEvents([])
   }
 
@@ -59,6 +68,7 @@ const Main: FC = () => {
         setClicks(res.coin)
         setLevelInfo(res.level)
       })
+      .catch(err => showError(err.error))
   }
 
   const refreshInitalInfo = () => {
@@ -70,13 +80,15 @@ const Main: FC = () => {
         setRating(res.rating)
         res.active_boost.active ? setExpireDate(res.active_boost.expired_at) : setExpireDate('')
       })
+      .catch(err => showError(err.error))
     api.getMultiplier()
       .then(res => setMultiplayer(res.multiplier))
-      .catch(() => {})
+      .catch(err => showError(err.error))
   }
 
   useEffect(() => {
     refreshInitalInfo()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
@@ -154,7 +166,7 @@ const Main: FC = () => {
             onClose={() => setIsNewLevelPopupOpen(false)}
           />
       }
-      
+      { error !== '' && <Notification type='Error' text={error} /> }
     </div>
   )
 }

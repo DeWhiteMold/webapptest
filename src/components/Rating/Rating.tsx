@@ -3,10 +3,19 @@ import './Rating.scss'
 import RatingCard from './RatingCard/RatingCard'
 import { RatingUserI } from 'types/types'
 import { api } from 'utilits/api'
+import Notification from 'ui/Notification/Notification'
+import WebApp from '@twa-dev/sdk'
 
 const Rating: FC = () => {
   const [user, setUser] = useState<RatingUserI|null>(null)
   const [users, setUsers] = useState<RatingUserI[]>([])
+  const [error, setError] = useState<string>('')
+
+  const showError = (text: string) => {
+    WebApp.HapticFeedback.notificationOccurred('error')
+    setError(text)
+    setTimeout(() => setError(''), 3000);
+  }
 
   const getLeaderBoard = () => {
     api.getRating()
@@ -14,6 +23,7 @@ const Rating: FC = () => {
         setUser(res.user)
         setUsers(res.leaderboard)
       })
+      .catch(err => showError(err.error))
   }
 
   useEffect(getLeaderBoard, [])
@@ -29,6 +39,7 @@ const Rating: FC = () => {
           users.map(user => <RatingCard key={user.tg_user_id} user={user} />) 
         }
       </div>
+      { error !== '' && <Notification type='Error' text={error} /> }
     </div>
   )
 }

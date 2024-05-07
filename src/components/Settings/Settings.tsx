@@ -3,10 +3,19 @@ import './Settings.scss'
 import ReactSwitch from 'react-switch'
 import { useNavigate } from 'react-router-dom'
 import WebApp from '@twa-dev/sdk'
+import { api } from 'utilits/api'
+import Notification from 'ui/Notification/Notification'
 
 const Settings: FC = () => {
   const [hiddenRatnig, setHiddenRating] = useState<boolean>(false)
   const [hiddenName, setHiddenName] = useState<boolean>(false)
+  const [error, setError] = useState<string>('')
+
+  const showError = (text: string) => {
+    WebApp.HapticFeedback.notificationOccurred('error')
+    setError(text)
+    setTimeout(() => setError(''), 3000);
+  }
 
   const switchProps = {
     offColor: '#EFEFF4',
@@ -25,10 +34,30 @@ const Settings: FC = () => {
     WebApp.BackButton.hide()
   })
 
+  const changeName = (newState: boolean) => {
+    setHiddenName(newState)
+    api.updateFakeName()
+      .catch(() => showError('Error'))
+  }
+  const changePrivacy = (newState: boolean) => {
+    setHiddenRating(newState)
+    api.updatePrivacy()
+      .catch(() => showError('Error'))
+  }
+
+  const getSetting = () => {
+    api.getSettings()
+      .then((res) => {
+        setHiddenName(res.fake_name)
+        setHiddenRating(res.private)
+      })
+      .catch(err => showError(err.error))
+  }
+
   useEffect(() => {
-    try {
-      WebApp.BackButton.show()
-    } catch {}
+    WebApp.BackButton.show()
+    getSetting()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return (
     <div className='settings'>
@@ -39,7 +68,7 @@ const Settings: FC = () => {
           <span className="settings__name">Display in rating</span>
           <ReactSwitch
             checked={hiddenRatnig}
-            onChange={setHiddenRating}
+            onChange={changePrivacy}
             {...switchProps}
           />
         </div>
@@ -47,12 +76,13 @@ const Settings: FC = () => {
           <span className="settings__name">Change real name</span>
           <ReactSwitch
             checked={hiddenName}
-            onChange={setHiddenName}
+            onChange={changeName}
             {...switchProps}
           />
         </div>
       </div>
       <h3 className="settings__caption">Privacy settings in the ranking list</h3>
+      { error !== '' && <Notification type='Error' text={error} /> }
     </div>
   )
 }

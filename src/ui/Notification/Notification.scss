@@ -29,6 +29,11 @@
   animation: open 3s ease-out 1;
   transform: translateY(200%);
 
+  &_main {
+    bottom: 63px;
+    left: 16px;
+  }
+
   &__icon {
     width: 24px;
     height: 24px;

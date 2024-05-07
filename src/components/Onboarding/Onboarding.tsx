@@ -5,16 +5,25 @@ import Button from 'ui/Button/Button'
 import { useLockBodyScroll } from '@uidotdev/usehooks'
 import { useNavigate } from 'react-router-dom'
 import { api } from 'utilits/api'
+import Notification from 'ui/Notification/Notification'
+import WebApp from '@twa-dev/sdk'
 
 const Onboarding: FC = () => {
   useLockBodyScroll()
   const navigate = useNavigate()
   const [loading, setLoading] = useState<boolean>(false)
+  const [error, setError] = useState<string>('')
+
+  const showError = (text: string) => {
+    WebApp.HapticFeedback.notificationOccurred('error')
+    setError(text)
+    setTimeout(() => setError(''), 3000);
+  }
   const handleOnboarding = () => {
     setLoading(true)
     api.updateOnboarding()
       .then(() => navigate('/'))
-      .catch()
+      .catch(err => showError(err.error))
   }
   return (
     <div className='onboarding'>
@@ -57,6 +66,7 @@ const Onboarding: FC = () => {
       >
         Start Playing
       </Button>
+      { error !== '' && <Notification type='Error' text={error} /> }
     </div>
   )
 }

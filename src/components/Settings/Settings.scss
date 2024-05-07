@@ -2,6 +2,7 @@
 @import 'src/styles/colors.scss';
 
 .settings {
+  position: relative;
   min-height: calc(100vh - 51px);
   box-sizing: border-box;
   padding: 16px;

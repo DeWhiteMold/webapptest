@@ -7,17 +7,25 @@ import { emptyProfile } from 'consts/consts'
 import { api } from 'utilits/api'
 import Notification from 'ui/Notification/Notification'
 import { getDateString } from 'utilits/getDateString'
+import WebApp from '@twa-dev/sdk'
 
 const Profile: FC = () => {
   const navigate = useNavigate()
   const [profile, setProfile] = useState<ProfileI>(emptyProfile)
   const [isCopied, setIsCopied] = useState<boolean>(false)
+  const [error, setError] = useState<string>('')
+
+  const showError = (text: string) => {
+    WebApp.HapticFeedback.notificationOccurred('error')
+    setError(text)
+    setTimeout(() => setError(''), 3000);
+  }
 
   const shareLink = () => {
-    window.open(`https://telegram.me/share/url?url=${'bot_link'}/${profile.referralCode}&text=Play with me at notnotcoin`, '_blank')
+    window.open(`https://telegram.me/share/url?url=${profile.referralCode}`, '_blank')
   }
   const copyLink = () => {
-    navigator.clipboard.writeText('bot_link' + '/' + profile.referralCode)
+    navigator.clipboard.writeText(profile.referralCode)
     setIsCopied(true)
     setTimeout(() => setIsCopied(false), 5000)
   }
@@ -37,6 +45,7 @@ const Profile: FC = () => {
           regDate: res.created_at
         })
       })
+      .catch(err => showError(err.error))
   }
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -115,6 +124,7 @@ const Profile: FC = () => {
         </div>
       </div> */}
       { isCopied && <Notification type='Link' />}
+      { error !== '' && <Notification type='Error' text={error} /> }
     </div>
   )
 }

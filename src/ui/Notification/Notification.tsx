@@ -6,7 +6,7 @@ import linkImg from 'images/Navigation/link_24.svg'
 import okImg from 'images/Interface/checkOk.svg' 
 import errImg from 'images/Interface/cancel_16.svg'
 
-const Notification: FC<NotificationProps> = ({type, coins, text, onCancel}) => {
+const Notification: FC<NotificationProps> = ({type, coins, text, main, onCancel}) => {
   const getImg = () => {
     switch(type) {
       case 'Coin': return coinImg
@@ -16,7 +16,7 @@ const Notification: FC<NotificationProps> = ({type, coins, text, onCancel}) => {
     }
   }
   return (
-    <div className='notification'>
+    <div className={`notification ${main && 'notification_main'}`}>
       <img src={getImg()} alt="" className="notification__icon" />
       {
         type === 'Link' &&

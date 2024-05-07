@@ -22,17 +22,32 @@ const Perks: FC = () => {
   const [isOk, setIsOk] = useState<boolean>(false)
   const [error, setError] = useState<string>('')
 
+  const showError = (text: string) => {
+    WebApp.HapticFeedback.notificationOccurred('error')
+    setError(text)
+    setTimeout(() => setError(''), 3000);
+  }
+
   const getPerks = () => {
     api.getPerks()
       .then(setPerks)
+      .catch((err) => {
+        showError(err.error)
+      })
   }
   const getBoosts = () => {
     api.getBoosts()
       .then(setBoosts)
+      .catch((err) => {
+        showError(err.error)
+      })
   }
   const getBalance = () => {
     api.getBalance()
       .then(res => setBalance(res.coin))
+      .catch((err) => {
+        showError(err.error)
+      })
   }
 
   const openPopup = (item: ShopItemI) => {
@@ -51,9 +66,8 @@ const Perks: FC = () => {
           setTimeout(() => setIsOk(false), 5000)
           WebApp.HapticFeedback.notificationOccurred('success')
         })
-        .catch(() => {
-          setError('Something wrong')
-          setTimeout(() => setError(''), 5000)
+        .catch((err) => {
+          showError(err.error)
           setSelectedItem(null)
         })
     } else if(selectedItem && selectedItem.type === 'boost') {
@@ -66,9 +80,8 @@ const Perks: FC = () => {
           setTimeout(() => setIsOk(false), 5000)
           WebApp.HapticFeedback.notificationOccurred('success')
         })
-        .catch(() => {
-          setError('Something wrong')
-          setTimeout(() => setError(''), 5000)
+        .catch((err) => {
+          showError(err.error)
           setSelectedItem(null)
         })
     }
@@ -78,6 +91,7 @@ const Perks: FC = () => {
     getPerks()
     getBoosts()
     getBalance()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return (
     <div className='perks'>

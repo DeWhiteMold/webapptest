@@ -2,6 +2,7 @@
 @import 'src/styles/colors.scss';
 
 .rating {
+  position: relative;
   min-height: calc(100vh - 51px);
   background-image: url(../../images/rating_bg.png);
   background-position: top;
