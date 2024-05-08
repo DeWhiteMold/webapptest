@@ -1,15 +1,16 @@
 {
   "files": {
-    "main.css": "/webapptest/static/css/main.ec79ea56.css",
-    "main.js": "/webapptest/static/js/main.a299c279.js",
+    "main.css": "/webapptest/static/css/main.6d57f0ec.css",
+    "main.js": "/webapptest/static/js/main.384c3f3a.js",
     "static/media/SF-Pro.ttf": "/webapptest/static/media/SF-Pro.4c7ba8b9b77fe52bdb7c.ttf",
-    "static/media/perks_bg.png": "/webapptest/static/media/perks_bg.ef27c40477e0ceb350a6.png",
-    "static/media/onboarding_bg.png": "/webapptest/static/media/onboarding_bg.267d672eb39b6989e2c4.png",
-    "static/media/rating_bg.png": "/webapptest/static/media/rating_bg.68d1adcc1bf2124003e2.png",
     "static/media/onboardingIcon.gif": "/webapptest/static/media/onboardingIcon.12e36fd19d673b1f0153.gif",
     "static/media/SF-Pro-Rounded-Bold.otf": "/webapptest/static/media/SF-Pro-Rounded-Bold.37012c1f760732d3daba.otf",
     "static/media/PartyPopper.webp": "/webapptest/static/media/PartyPopper.8c656671111f585a9448.webp",
     "static/media/main_bg.png": "/webapptest/static/media/main_bg.9b93c1cca14604d9d758.png",
+    "static/media/onboarding_bg.png": "/webapptest/static/media/onboarding_bg.45f7152876fdfe688ac8.png",
+    "static/media/gifts_bg.png": "/webapptest/static/media/gifts_bg.8002974aec056fcf61db.png",
+    "static/media/rating_bg.png": "/webapptest/static/media/rating_bg.3109a7414e03f1c5b19f.png",
+    "static/media/perks.png": "/webapptest/static/media/perks.af0de8a3f511f94973e8.png",
     "static/media/Coin.png": "/webapptest/static/media/Coin.12b28131ac5328b53217.png",
     "static/media/Settings.svg": "/webapptest/static/media/Settings.11c5f32928b9fd06b2a0.svg",
     "static/media/person_add_24.svg": "/webapptest/static/media/person_add_24.e888c926422e845a45cb.svg",
@@ -26,11 +27,11 @@
     "static/media/Check.svg": "/webapptest/static/media/Check.ecf3c44aefbfdbb80816.svg",
     "static/media/Chevron_Left.svg": "/webapptest/static/media/Chevron_Left.42811182289983847809.svg",
     "static/media/checkOk.svg": "/webapptest/static/media/checkOk.8f01392b34789be3e06d05e8e06431f3.svg",
-    "main.ec79ea56.css.map": "/webapptest/static/css/main.ec79ea56.css.map",
-    "main.a299c279.js.map": "/webapptest/static/js/main.a299c279.js.map"
+    "main.6d57f0ec.css.map": "/webapptest/static/css/main.6d57f0ec.css.map",
+    "main.384c3f3a.js.map": "/webapptest/static/js/main.384c3f3a.js.map"
   },
   "entrypoints": [
-    "static/css/main.ec79ea56.css",
-    "static/js/main.a299c279.js"
+    "static/css/main.6d57f0ec.css",
+    "static/js/main.384c3f3a.js"
   ]
 }
