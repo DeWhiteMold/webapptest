@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/webapptest/static/css/main.448090c6.css",
-    "main.js": "/webapptest/static/js/main.fd9d4c6f.js",
+    "main.css": "/webapptest/static/css/main.1de5080f.css",
+    "main.js": "/webapptest/static/js/main.c53028b7.js",
     "static/media/SF-Pro.ttf": "/webapptest/static/media/SF-Pro.4c7ba8b9b77fe52bdb7c.ttf",
     "static/media/onboardingIcon.gif": "/webapptest/static/media/onboardingIcon.12e36fd19d673b1f0153.gif",
     "static/media/SF-Pro-Rounded-Bold.otf": "/webapptest/static/media/SF-Pro-Rounded-Bold.37012c1f760732d3daba.otf",
@@ -13,25 +13,31 @@
     "static/media/perks.png": "/webapptest/static/media/perks.af0de8a3f511f94973e8.png",
     "static/media/Coin.png": "/webapptest/static/media/Coin.12b28131ac5328b53217.png",
     "static/media/Settings.svg": "/webapptest/static/media/Settings.11c5f32928b9fd06b2a0.svg",
+    "static/media/wallet-03.svg": "/webapptest/static/media/wallet-03.54383ce3e981981ab72bcd2ca579b352.svg",
     "static/media/person_add_24.svg": "/webapptest/static/media/person_add_24.e888c926422e845a45cb.svg",
     "static/media/link_24.svg": "/webapptest/static/media/link_24.946736ba6e6f059fbc93b616225d1895.svg",
     "static/media/House_01.svg": "/webapptest/static/media/House_01.b7a7589070790021fdc1.svg",
+    "static/media/exchange_circle_fill_32.svg": "/webapptest/static/media/exchange_circle_fill_32.298f1dfe42312311264059806928754c.svg",
     "static/media/Shopping_Bag_02.svg": "/webapptest/static/media/Shopping_Bag_02.56798f4cdd63a78c9084.svg",
+    "static/media/card_circle_fill_32.svg": "/webapptest/static/media/card_circle_fill_32.2de270f8beb964ad932945c1c29a6f48.svg",
     "static/media/Vector.svg": "/webapptest/static/media/Vector.e71a57816c14c67d1f88.svg",
+    "static/media/ic_usdt.svg": "/webapptest/static/media/ic_usdt.0961856675147c0a630c999494ab1b3a.svg",
+    "static/media/arrow_up_circle_fill_32.svg": "/webapptest/static/media/arrow_up_circle_fill_32.38e3586b703b3dee7df94ad9cbca07b3.svg",
     "index.html": "/webapptest/index.html",
     "static/media/cancel_16.svg": "/webapptest/static/media/cancel_16.feccae832e7cc5892182a1ce2d08a48d.svg",
     "static/media/Trending_Up.svg": "/webapptest/static/media/Trending_Up.45f1029b1e8b306e2738.svg",
     "static/media/loader.svg": "/webapptest/static/media/loader.e2a64d803e9f76bc538b.svg",
     "static/media/arrow_right_24.svg": "/webapptest/static/media/arrow_right_24.414ab75f2b63c689a519ce480e76b3f4.svg",
+    "static/media/chevron_down_20.svg": "/webapptest/static/media/chevron_down_20.64441fc25d039d730895.svg",
     "static/media/User_02.svg": "/webapptest/static/media/User_02.aff80a215dfd8d0e65c1.svg",
     "static/media/Check.svg": "/webapptest/static/media/Check.ecf3c44aefbfdbb80816.svg",
     "static/media/Chevron_Left.svg": "/webapptest/static/media/Chevron_Left.42811182289983847809.svg",
     "static/media/checkOk.svg": "/webapptest/static/media/checkOk.8f01392b34789be3e06d05e8e06431f3.svg",
-    "main.448090c6.css.map": "/webapptest/static/css/main.448090c6.css.map",
-    "main.fd9d4c6f.js.map": "/webapptest/static/js/main.fd9d4c6f.js.map"
+    "main.1de5080f.css.map": "/webapptest/static/css/main.1de5080f.css.map",
+    "main.c53028b7.js.map": "/webapptest/static/js/main.c53028b7.js.map"
   },
   "entrypoints": [
-    "static/css/main.448090c6.css",
-    "static/js/main.fd9d4c6f.js"
+    "static/css/main.1de5080f.css",
+    "static/js/main.c53028b7.js"
   ]
 }
