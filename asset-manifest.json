@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/webapptest/static/css/main.759baa60.css",
-    "main.js": "/webapptest/static/js/main.97a8efe6.js",
+    "main.css": "/webapptest/static/css/main.43cf4ace.css",
+    "main.js": "/webapptest/static/js/main.bfc4ff47.js",
     "static/media/SF-Pro.ttf": "/webapptest/static/media/SF-Pro.4c7ba8b9b77fe52bdb7c.ttf",
     "static/media/onboardingIcon.gif": "/webapptest/static/media/onboardingIcon.12e36fd19d673b1f0153.gif",
     "static/media/SF-Pro-Rounded-Bold.otf": "/webapptest/static/media/SF-Pro-Rounded-Bold.37012c1f760732d3daba.otf",
@@ -33,11 +33,11 @@
     "static/media/Check.svg": "/webapptest/static/media/Check.ecf3c44aefbfdbb80816.svg",
     "static/media/Chevron_Left.svg": "/webapptest/static/media/Chevron_Left.42811182289983847809.svg",
     "static/media/checkOk.svg": "/webapptest/static/media/checkOk.8f01392b34789be3e06d05e8e06431f3.svg",
-    "main.759baa60.css.map": "/webapptest/static/css/main.759baa60.css.map",
-    "main.97a8efe6.js.map": "/webapptest/static/js/main.97a8efe6.js.map"
+    "main.43cf4ace.css.map": "/webapptest/static/css/main.43cf4ace.css.map",
+    "main.bfc4ff47.js.map": "/webapptest/static/js/main.bfc4ff47.js.map"
   },
   "entrypoints": [
-    "static/css/main.759baa60.css",
-    "static/js/main.97a8efe6.js"
+    "static/css/main.43cf4ace.css",
+    "static/js/main.bfc4ff47.js"
   ]
 }
